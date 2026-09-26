@@ -1,0 +1,177 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens
+   Primitive palette → used through semantic utility names
+   (bg-ink, text-paper, bg-volt …). Brights are accents, not surfaces:
+   ribbons, tags, stage markers and interaction states only.
+------------------------------------------------------------------- */
+@theme {
+  --color-ink: #08080b;
+  --color-ink-2: #101015;
+  --color-ink-3: #18181f;
+  --color-line: #2a2a34;
+  --color-line-strong: #3b3b48;
+  --color-mute: #8f8d9c;
+  --color-paper: #f3f0e8;
+  --color-paper-2: #e6e2d6;
+  --color-paper-line: #cfc9b8;
+  --color-paper-mute: #5d5a52;
+
+  --color-volt: #3f5bff;
+  --color-flare: #ff5b22;
+  --color-sun: #ffd33d;
+  --color-iris: #b79cff;
+  --color-mint: #3fdb94;
+
+  --font-display: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
+  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Fluid display scale — typography is part of the motion system */
+  --text-mega: clamp(3.4rem, 11.5vw, 12.5rem);
+  --text-mega--line-height: 0.84;
+  --text-giant: clamp(2.8rem, 8vw, 8.5rem);
+  --text-giant--line-height: 0.86;
+  --text-huge: clamp(2.3rem, 5.6vw, 5.75rem);
+  --text-huge--line-height: 0.88;
+  --text-big: clamp(1.9rem, 3.6vw, 3.5rem);
+  --text-big--line-height: 0.92;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+
+  --animate-drift: drift 7s ease-in-out infinite;
+  --animate-pulse-dot: pulse-dot 2.4s ease-in-out infinite;
+
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0);
+    }
+  }
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  /* Community platform: calm UI motion only — fades and ≤6px shifts, ≤220ms */
+  --animate-fade-in: fade-in 200ms var(--ease-soft) both;
+  --animate-toast-in: toast-in 180ms var(--ease-soft) both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 6px, 0);
+    }
+  }
+  @keyframes toast-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 4px, 0);
+    }
+  }
+
+  --radius-card: 1.75rem;
+  --radius-tile: 1.25rem;
+
+  --spacing-gutter: clamp(1rem, 4vw, 3.5rem);
+  --spacing-section: clamp(5.5rem, 12vw, 11rem);
+}
+
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ink font-sans text-paper antialiased;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-sun);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  img,
+  canvas {
+    display: block;
+  }
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+@layer components {
+  /* Condensed italic display voice */
+  .display {
+    font-family: var(--font-display);
+    font-stretch: 62%;
+    font-style: italic;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: -0.012em;
+  }
+  .display-upright {
+    font-family: var(--font-display);
+    font-stretch: 70%;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .container-x {
+    width: 100%;
+    max-width: 104rem;
+    margin-inline: auto;
+    padding-inline: var(--spacing-gutter);
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Frame sequences are black-matted — screen drops the black onto dark surfaces */
+  .frame-blend {
+    mix-blend-mode: screen;
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%);
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
