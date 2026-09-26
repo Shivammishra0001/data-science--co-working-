@@ -1,7 +1,7 @@
-name: data-science-co-working
-region: nyc
+name: coworking
+region: blr
 static_sites:
-  - name: www
+  - name: co-working-space
     github:
       repo: Shivammishra0001/data-science--co-working-
       branch: main
