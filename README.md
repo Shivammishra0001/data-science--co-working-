@@ -1,36 +1,44 @@
 # data-science--co-working-
 
-Interchange co-working website. App code lives in `co-working/`.
+Chrysalis — AI builder co-working website. Vite + React single-page app.
+`package.json` is at the **repository root** so DigitalOcean App Platform detects Node.js.
 
 ## Local
 
 ```bash
-cd co-working
-npm install
-npm run dev
+npm ci
+npm run dev      # http://localhost:5173
+npm run build    # production build → dist/
 ```
+
+Node 22 (see `.nvmrc`; Vite 8 needs Node ^20.19 or >=22.12).
 
 ## DigitalOcean App Platform
 
-This is a **Vite static site**, not a Node server. Do **not** set the build command to `npm run dev` — that starts a local dev server, never finishes a production build, and on a Static Site resource Node/npm is often missing (`npm: command not found`).
-
-### Settings (fix the failed deploy)
-
-1. Open the app in [DigitalOcean App Platform](https://cloud.digitalocean.com/apps).
-2. **Settings → App-Level Settings / Components** for this site, then **Edit**.
-3. Use:
+Deployed as a **Static Site built with the Node.js buildpack** — Node/npm are available
+during the build, and only the built `dist/` is served. The spec is in `.do/app.yaml`:
 
 | Field | Value |
 | --- | --- |
-| Resource type | **Static Site** (not Web Service) |
-| Branch | `main` (latest commit, not an old empty README-only SHA) |
-| Source Directory | `co-working` |
-| Environment / buildpack | **Node.js** (`node-js`), not Static Assets / HTML |
-| Build Command | `npm ci && npm run build` |
-| Output Directory | `dist` |
-| Custom run / start command | **leave empty** (delete `npm run dev`) |
-| Catchall document | `index.html` (for React Router paths) |
+| Resource type | Static Site |
+| Source directory | `/` (repo root — where `package.json` is) |
+| Environment | `node-js` |
+| Build command | `npm ci && npm run build` |
+| Output directory | `dist` |
+| Run command | none (static site) |
+| Catch-all document | `index.html` (client-side routes like `/community/openai`) |
 
-4. Save, then **Create Deployment** / **Deploy**.
+`npm: command not found` means the component was built without the Node.js buildpack —
+usually because the source directory didn't contain `package.json`, or the component was
+set to plain static assets. Don't use `npm run dev` as a build or run command.
 
-You can also replace the app spec with `.do/app.yaml` in this repo (Settings → App Spec).
+Apply the spec to the live app (the file in the repo is not applied automatically):
+
+```bash
+doctl auth init                                   # if the CLI token has expired
+doctl apps list                                   # find the app ID
+doctl apps update <APP_ID> --spec .do/app.yaml
+doctl apps create-deployment <APP_ID> --wait
+```
+
+Or: Control Panel → the app → Settings → App Spec → paste `.do/app.yaml` → Save.

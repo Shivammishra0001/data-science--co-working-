@@ -19,7 +19,7 @@
     "tailwindcss": "^4.3.3"
   },
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
