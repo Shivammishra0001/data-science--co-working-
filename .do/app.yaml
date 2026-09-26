@@ -1,0 +1,14 @@
+name: data-science-co-working
+region: nyc
+static_sites:
+  - name: www
+    github:
+      repo: Shivammishra0001/data-science--co-working-
+      branch: main
+      deploy_on_push: true
+    source_dir: co-working
+    environment_slug: node-js
+    build_command: npm ci && npm run build
+    output_dir: dist
+    index_document: index.html
+    catchall_document: index.html
