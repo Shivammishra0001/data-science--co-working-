@@ -1,8 +1,10 @@
-// Brand + navigation config. The name is a working title — change it here only.
+// Brand + navigation config — the single source for the brand name.
+// `wordmark` is the stacked two-line lockup used next to the logo mark.
 export const brand = {
-  name: 'Chrysalis',
-  descriptor: 'AI Builder Space',
-  email: 'hello@chrysalis.build',
+  name: 'Data Science Co-Working',
+  wordmark: ['Data Science', 'Co-Working'],
+  descriptor: 'AI & data builder space',
+  email: 'hello@datasciencecoworking.com', // placeholder — replace with the real inbox
   location: 'Bengaluru, India',
 }
 

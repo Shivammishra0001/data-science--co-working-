@@ -6,11 +6,12 @@ import { AuthContext } from './useAuth'
 // DEMO AUTH. There is no auth backend yet: "signing in" stores a local profile
 // (name + email) so community participation can be exercised end to end.
 // Swap for the real session provider later; keep `user`, `openLogin`, `logout`.
-const SESSION_KEY = 'chrysalis.session'
+const SESSION_KEY = 'dscw.session'
+const LEGACY_SESSION_KEY = 'chrysalis.session' // pre-rebrand
 
 function readSession() {
   try {
-    const id = localStorage.getItem(SESSION_KEY)
+    const id = localStorage.getItem(SESSION_KEY) ?? localStorage.getItem(LEGACY_SESSION_KEY)
     return (id && db.users[id]) || null
   } catch {
     return null

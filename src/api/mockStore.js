@@ -3,7 +3,8 @@
 // localStorage, so the demo survives reloads. Replace communityApi.js with
 // real fetch calls and this file goes away.
 
-const KEY = 'chrysalis.community.v1'
+const KEY = 'dscw.community.v1'
+const LEGACY_KEY = 'chrysalis.community.v1' // pre-rebrand; read once, then migrated
 
 const empty = () => ({
   users: {}, // id → user (demo sign-ins)
@@ -20,7 +21,7 @@ const empty = () => ({
 
 function load() {
   try {
-    const raw = localStorage.getItem(KEY)
+    const raw = localStorage.getItem(KEY) ?? localStorage.getItem(LEGACY_KEY)
     return raw ? { ...empty(), ...JSON.parse(raw) } : empty()
   } catch {
     return empty()

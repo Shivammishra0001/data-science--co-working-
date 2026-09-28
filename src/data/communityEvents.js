@@ -7,7 +7,7 @@ const inDays = (d, hour = 18, min = 30) => {
   t.setHours(hour, min, 0, 0)
   return t.toISOString()
 }
-const HQ = 'Chrysalis, Bengaluru · Floor 3'
+const HQ = 'Data Science Co-Working, Bengaluru · Floor 3'
 
 export const communityEvents = [
   { id: 'e-oa-1', communityId: 'openai', kind: 'Talk', title: 'Agents in production: show & tell', description: 'Three teams walk through an agent that’s live — traces, failures and all.', date: inDays(4), location: HQ, url: null, hostId: 'm14', participantsCount: 64 },

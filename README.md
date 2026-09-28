@@ -1,6 +1,6 @@
 # data-science--co-working-
 
-Chrysalis — AI builder co-working website. Vite + React single-page app.
+Data Science Co-Working — AI & data builder co-working website. Vite + React single-page app.
 `package.json` is at the **repository root** so DigitalOcean App Platform detects Node.js.
 
 ## Local

@@ -52,8 +52,12 @@ export function Footer() {
           </nav>
         </div>
 
-        <p aria-hidden="true" className="display mt-20 overflow-hidden text-[clamp(4rem,18vw,18rem)] leading-[0.8] whitespace-nowrap text-paper/[0.06] select-none">
-          {brand.name}
+        <p aria-hidden="true" className="display mt-20 overflow-hidden text-[clamp(3rem,11.5vw,11.5rem)] leading-[0.82] whitespace-nowrap text-paper/[0.06] select-none">
+          {brand.wordmark.map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
         </p>
         <div className="mt-6 flex flex-wrap justify-between gap-4 font-mono text-xs text-paper/45">
           <span>

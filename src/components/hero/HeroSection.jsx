@@ -33,7 +33,8 @@ export function HeroSection() {
       <motion.div style={{ y: copyY, opacity: copyOpacity }} className="container-x relative flex flex-1 flex-col justify-center">
         <p className="eyebrow mb-6 flex items-center gap-3 text-paper/70 sm:mb-8">
           <span className="animate-pulse-dot size-2 rounded-full bg-mint" aria-hidden="true" />
-          {brand.name} · {brand.descriptor} · {brand.location}
+          {brand.descriptor}
+          <span className="hidden sm:inline">· {brand.location}</span>
         </p>
 
         <h1 id="hero-title" className="display">

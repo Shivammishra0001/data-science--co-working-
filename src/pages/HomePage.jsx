@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <>
       {/* React 19 hoists these into <head> */}
-      <title>{`${brand.name} — The AI Builder Space`}</title>
+      <title>{`${brand.name} — Build what comes next`}</title>
       <meta
         name="description"
         content="A co-working space and builder ecosystem for data scientists, AI builders and founders. Ideate, build, validate and launch."
