@@ -23,7 +23,7 @@ during the build, and only the built `dist/` is served. The spec is in `.do/app.
 | Resource type | Static Site |
 | Source directory | `/` (repo root — where `package.json` is) |
 | Environment | `node-js` |
-| Build command | `npm ci && npm run build` |
+| Build command | `npm run build` (the Node.js buildpack runs `npm ci` itself first) |
 | Output directory | `dist` |
 | Run command | none (static site) |
 | Catch-all document | `index.html` (client-side routes like `/community/openai`) |
