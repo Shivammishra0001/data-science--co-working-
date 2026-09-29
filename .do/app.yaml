@@ -1,6 +1,6 @@
 name: coworking
 region: blr
-static_sites:
+services:
   - name: co-working-space
     github:
       repo: Shivammishra0001/data-science--co-working-
@@ -9,6 +9,11 @@ static_sites:
     source_dir: /
     environment_slug: node-js
     build_command: npm run build
-    output_dir: dist
-    index_document: index.html
-    catchall_document: index.html
+    run_command: npm start
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: apps-s-1vcpu-0.5gb
+    routes:
+      - path: /
+    health_check:
+      http_path: /healthz
