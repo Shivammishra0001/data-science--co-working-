@@ -6,6 +6,11 @@ logs
 *.log
 npm-debug.log*
 
+# Environment files — never commit secrets. Only .env.example is tracked.
+.env
+.env.*
+!.env.example
+
 .DS_Store
 **/.DS_Store
 
