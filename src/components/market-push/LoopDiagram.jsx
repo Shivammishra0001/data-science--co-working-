@@ -158,7 +158,7 @@ export function LoopDiagram({
                 aria-label={`${String(i + 1).padStart(2, '0')} ${st.label}: ${st.copy}`}
                 style={{ left: pct(x), top: pct(y), '--acc': accentVar[st.accent] ?? 'var(--color-flare)' }}
                 className={cx(
-                  'absolute grid size-[clamp(2.6rem,6.4%,4.4rem)] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full font-mono text-[clamp(0.6rem,1.2vw,0.8rem)] font-semibold',
+                  'absolute grid size-[clamp(2.6rem,6.4%,4.4rem)] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full font-mono text-[clamp(0.6875rem,1.2vw,0.8rem)] font-semibold',
                   'transition-[transform,background-color,box-shadow,color] duration-500 ease-[var(--ease-expo)]',
                   isActive
                     ? cx(accentSolid[st.accent] ?? 'bg-flare text-ink', 'scale-[1.45] shadow-[0_0_0_10px_color-mix(in_srgb,var(--acc)_22%,transparent),0_0_40px_6px_color-mix(in_srgb,var(--acc)_45%,transparent)]')
@@ -194,7 +194,7 @@ export function LoopDiagram({
           <span
             key={label}
             style={{ left: pct(x), top: pct(y) }}
-            className={cx('absolute -translate-x-1/2 -translate-y-1/2 rounded-full border px-3 py-1 font-mono text-[clamp(0.55rem,1vw,0.72rem)] tracking-[0.14em] whitespace-nowrap uppercase', t.satellite)}
+            className={cx('absolute -translate-x-1/2 -translate-y-1/2 rounded-full border px-3 py-1 font-mono text-[clamp(0.6875rem,1vw,0.72rem)] tracking-[0.14em] whitespace-nowrap uppercase', t.satellite)}
           >
             {label}
           </span>

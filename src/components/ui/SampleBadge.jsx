@@ -8,7 +8,7 @@ export function SampleBadge({ show = true, tone = 'dark', className, children = 
   return (
     <span
       className={cx(
-        'eyebrow inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 !text-[0.65rem] whitespace-nowrap',
+        'eyebrow inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 !text-[0.6875rem] whitespace-nowrap',
         tone === 'dark' ? 'border-line-strong text-mute' : 'border-paper-line text-paper-mute',
         className,
       )}

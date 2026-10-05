@@ -63,9 +63,9 @@ function Pipeline() {
       <ol className="grid gap-3 md:grid-cols-4 md:gap-0">
         {signalPipeline.map((step, i) => (
           <li key={step.id} className="relative flex items-stretch md:block">
-            <div className={cx('flex-1 rounded-tile border border-line bg-ink-2 p-5 md:mr-10', i === signalPipeline.length - 1 && 'border-mint md:mr-0')}>
+            <div className={cx('flex-1 rounded-tile border border-line bg-ink-2 p-5 md:mr-6 lg:mr-10', i === signalPipeline.length - 1 && 'border-mint md:mr-0')}>
               <span className="font-mono text-xs text-paper/45">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className={cx('display mt-2 text-4xl leading-none', i === signalPipeline.length - 1 && 'text-mint')}>{step.label}</h3>
+              <h3 className={cx('display mt-2 text-3xl leading-none lg:text-4xl', i === signalPipeline.length - 1 && 'text-mint')}>{step.label}</h3>
               <p className="mt-2 text-sm text-paper/60">{step.note}</p>
             </div>
             {i < signalPipeline.length - 1 && <Flow progress={scrollYProgress} phase={i * 0.21} />}
@@ -80,7 +80,7 @@ function Pipeline() {
 function Flow({ progress, phase }) {
   const dots = [0, 0.33, 0.66]
   return (
-    <div aria-hidden="true" className="absolute top-full left-8 h-3 w-px md:top-1/2 md:right-0 md:left-auto md:h-px md:w-10">
+    <div aria-hidden="true" className="absolute top-full left-8 h-3 w-px md:top-1/2 md:right-0 md:left-auto md:h-px md:w-6 lg:w-10">
       <div className="absolute inset-0 bg-line-strong" />
       {dots.map((d) => (
         <FlowDot key={d} progress={progress} offset={d + phase} />

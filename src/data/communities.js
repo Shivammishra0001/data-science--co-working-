@@ -291,3 +291,14 @@ export const ecosystemCard = {
   description: 'AI, data, cloud, developer tools, research and more.',
   href: '/community',
 }
+
+// Home page "Technology communities" section — left-column copy.
+// Edit the words here; the layout is in src/components/communities/CommunityGrid.jsx.
+export const communitySection = {
+  eyebrow: 'Technology communities',
+  title: ['Every stack', 'has a crowd.', 'Find yours.'], // last line is highlighted
+  body: 'Builders who use the same tools, in the same room — swapping code, questions and wins, from LLMs and open models to graphs and GPUs.',
+  points: ['Ask the people who already solved it', 'Share what you’re building', 'Join meetups, workshops and demo days'],
+  cta: { label: 'Explore communities', href: '/community' },
+  viewAll: { label: 'View all', href: '/community' },
+}

@@ -85,7 +85,7 @@ function PinnedIdeaSignal() {
 
   return (
     <ThemeSection tone="light" id="idea-signal" labelledBy="mp-signal-title" sectionRef={ref}>
-      <div className="h-[420vh] lg:h-[520vh]">
+      <div className="h-[240vh] lg:h-[380vh]">
         <div className="sticky top-0 flex h-svh flex-col overflow-hidden pt-24 lg:justify-center lg:pt-16">
           <div className="container-x grid flex-1 grid-cols-[minmax(0,1fr)] content-start items-center gap-6 lg:content-center lg:flex-none lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-10">
             <div>

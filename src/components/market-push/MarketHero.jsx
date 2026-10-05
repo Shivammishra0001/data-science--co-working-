@@ -30,7 +30,7 @@ export function MarketHero() {
       id="top"
       aria-labelledby="mp-hero-title"
       data-theme="dark"
-      className="relative isolate flex min-h-[112svh] flex-col overflow-hidden bg-ink pt-28"
+      className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink pt-28"
     >
       <NeuralField
         connectivity={connectivity}

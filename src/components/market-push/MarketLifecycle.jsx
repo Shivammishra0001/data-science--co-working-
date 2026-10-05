@@ -39,7 +39,7 @@ const Center = () => (
       <br />
       Push
     </span>
-    <span className="font-mono text-[0.6rem] tracking-[0.16em] text-paper/45 uppercase">a loop, not a line</span>
+    <span className="font-mono text-[0.6875rem] tracking-[0.16em] text-paper/45 uppercase">a loop, not a line</span>
   </div>
 )
 
@@ -52,7 +52,7 @@ function PinnedLifecycle() {
 
   return (
     <ThemeSection tone="dark" id="lifecycle" labelledBy="mp-lifecycle-title" sectionRef={ref}>
-      <div style={{ height: `${N * 70 + 100}vh` }}>
+      <div style={{ height: `${N * 55 + 70}vh` }}>
         <div className="sticky top-0 flex h-svh items-center overflow-hidden">
           <div className="container-x grid items-center gap-10 pt-16 lg:grid-cols-[0.85fr_1.15fr]">
             <div>

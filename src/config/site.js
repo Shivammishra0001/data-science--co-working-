@@ -16,7 +16,7 @@ export const navLinks = [
   { label: 'Projects', href: '/#projects' },
   { label: 'Market Push', href: '/market-push' },
   { label: 'Community', href: '/community' },
-  { label: 'About', href: '/#why' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -37,7 +37,7 @@ export const footerColumns = [
   {
     title: 'Company',
     links: [
-      { label: 'About', href: '/#why' },
+      { label: 'About', href: '/about' },
       { label: 'Contact', href: '#contact' },
     ],
   },

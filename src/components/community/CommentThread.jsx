@@ -90,7 +90,7 @@ function CommentBody({ comment, small, onReply, post }) {
   return (
     <div className="flex gap-3">
       <SmartLink href={profileHref(author)} tabIndex={-1} aria-hidden="true">
-        <Avatar name={author.name} accent={author.accent ?? 'sun'} size="sm" className={small ? '!size-7 text-[0.6rem]' : ''} />
+        <Avatar name={author.name} accent={author.accent ?? 'sun'} size="sm" className={small ? '!size-7 text-[0.6875rem]' : ''} />
       </SmartLink>
       <div className="min-w-0 flex-1">
         <div className="rounded-lg bg-paper/[0.05] px-3.5 py-2.5">

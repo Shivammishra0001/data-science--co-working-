@@ -33,7 +33,7 @@ export function PostImages({ images }) {
 export function CodeBlock({ code }) {
   return (
     <div className="mt-3 overflow-hidden rounded-lg border border-line bg-[#0d0d12]">
-      <div className="flex items-center justify-between border-b border-line px-3 py-1.5 font-mono text-[0.68rem] tracking-wide text-paper/45 uppercase">
+      <div className="flex items-center justify-between border-b border-line px-3 py-1.5 font-mono text-[0.6875rem] tracking-wide text-paper/45 uppercase">
         {code.lang}
       </div>
       <pre className="overflow-x-auto p-4 font-mono text-[0.8rem] leading-relaxed text-paper/85">
@@ -55,7 +55,7 @@ export function LinkPreview({ link }) {
         <ExternalLink aria-hidden="true" className="size-4 text-paper/60" />
       </span>
       <span className="min-w-0">
-        <span className="block font-mono text-[0.68rem] tracking-wide text-paper/45 uppercase">{link.domain}</span>
+        <span className="block font-mono text-[0.6875rem] tracking-wide text-paper/45 uppercase">{link.domain}</span>
         <span className="mt-0.5 block font-semibold">{link.title}</span>
         {link.description && <span className="mt-1 line-clamp-2 block text-sm text-paper/60">{link.description}</span>}
         <span className="sr-only"> (opens in a new tab)</span>
@@ -67,7 +67,7 @@ export function LinkPreview({ link }) {
 export function ProjectPreview({ project }) {
   return (
     <div className="mt-3 rounded-lg border border-line bg-ink p-4">
-      <div className="flex items-center gap-2 font-mono text-[0.68rem] tracking-wide text-paper/50 uppercase">
+      <div className="flex items-center gap-2 font-mono text-[0.6875rem] tracking-wide text-paper/50 uppercase">
         <Rocket aria-hidden="true" className="size-3.5" /> Project · {project.stage}
       </div>
       <p className="mt-2 text-lg font-semibold">{project.name}</p>
@@ -173,11 +173,11 @@ export function EventCard({ event, compact = false }) {
   return (
     <article className={cx('flex gap-4 rounded-lg border border-line bg-ink p-4', !compact && 'sm:p-5')}>
       <div className="flex w-14 shrink-0 flex-col items-center rounded-md border border-line-strong py-2">
-        <span className="font-mono text-[0.65rem] tracking-wide text-flare uppercase">{month}</span>
+        <span className="font-mono text-[0.6875rem] tracking-wide text-flare uppercase">{month}</span>
         <span className="text-2xl leading-none font-semibold">{day}</span>
       </div>
       <div className="min-w-0 flex-1">
-        <p className="font-mono text-[0.68rem] tracking-wide text-paper/50 uppercase">{event.kind}</p>
+        <p className="font-mono text-[0.6875rem] tracking-wide text-paper/50 uppercase">{event.kind}</p>
         <h3 className="mt-0.5 font-semibold">{event.title}</h3>
         {!compact && <p className="mt-1 text-sm text-paper/65">{event.description}</p>}
         <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-paper/55">

@@ -123,7 +123,7 @@ export function CommunityProjects() {
         {data.map((p) => (
           <li key={p.id} className="flex flex-col rounded-xl border border-line bg-ink-2 p-5 transition-colors hover:border-line-strong">
             <div className="flex items-center justify-between gap-3">
-              <span className="rounded-full bg-paper/[0.07] px-2.5 py-0.5 font-mono text-[0.66rem] tracking-wide text-paper/75 uppercase">{p.stage}</span>
+              <span className="rounded-full bg-paper/[0.07] px-2.5 py-0.5 font-mono text-[0.6875rem] tracking-wide text-paper/75 uppercase">{p.stage}</span>
               <span className="text-xs text-paper/45">{p.tech.join(' · ')}</span>
             </div>
             <h3 className="mt-3 text-lg font-semibold">{p.name}</h3>
@@ -178,8 +178,8 @@ export function CommunityMembers() {
             <div className="min-w-0 flex-1">
               <p className="flex flex-wrap items-center gap-2 font-semibold">
                 {m.name}
-                {m.isModerator && <span className="rounded-full bg-sun/15 px-2 py-0.5 text-[0.65rem] font-semibold text-sun">Moderator</span>}
-                {m.isLocal && <span className="rounded-full bg-mint/15 px-2 py-0.5 text-[0.65rem] font-semibold text-mint">You</span>}
+                {m.isModerator && <span className="rounded-full bg-sun/15 px-2 py-0.5 text-[0.6875rem] font-semibold text-sun">Moderator</span>}
+                {m.isLocal && <span className="rounded-full bg-mint/15 px-2 py-0.5 text-[0.6875rem] font-semibold text-mint">You</span>}
               </p>
               <p className="text-sm text-paper/55">{m.role}</p>
               {m.skills?.length > 0 && <p className="mt-2 text-xs text-paper/50">{m.skills.join(' · ')}</p>}

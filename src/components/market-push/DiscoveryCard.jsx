@@ -9,7 +9,7 @@ const flagLabel = Object.fromEntries(filters.map((f) => [f.id, f.label]))
 const categoryLabel = Object.fromEntries(categories.map((c) => [c.id, c.label]))
 
 // Innovation, not inventory: stage and what it needs lead; there is no price.
-export const DiscoveryCard = forwardRef(function DiscoveryCard({ item }, ref) {
+export const DiscoveryCard = forwardRef(function DiscoveryCard({ item, className }, ref) {
   return (
     <motion.li
       ref={ref}
@@ -21,16 +21,17 @@ export const DiscoveryCard = forwardRef(function DiscoveryCard({ item }, ref) {
       className={cx(
         'group relative flex flex-col overflow-hidden rounded-card border border-line bg-ink-2 transition-colors duration-300',
         accentBorderHover[item.accent],
+        className,
       )}
     >
       <div className="relative m-2 aspect-[16/10] overflow-hidden rounded-[1.2rem]">
         <div className="size-full transition-transform duration-500 ease-[var(--ease-expo)] group-hover:scale-[1.03]">
           <ProjectVisual kind={item.visual} accent={item.accent} />
         </div>
-        <span className={cx('absolute top-3 left-3 rounded-full px-2.5 py-1 font-mono text-[0.62rem] font-semibold tracking-[0.12em] uppercase', accentSolid[item.accent])}>
+        <span className={cx('absolute top-3 left-3 rounded-full px-2.5 py-1 font-mono text-[0.6875rem] font-semibold tracking-[0.12em] uppercase', accentSolid[item.accent])}>
           {item.stage}
         </span>
-        <span className="absolute top-3 right-3 rounded-full bg-ink/80 px-2.5 py-1 font-mono text-[0.62rem] tracking-[0.12em] text-paper uppercase">
+        <span className="absolute top-3 right-3 rounded-full bg-ink/80 px-2.5 py-1 font-mono text-[0.6875rem] tracking-[0.12em] text-paper uppercase">
           {categoryLabel[item.category]}
         </span>
       </div>
@@ -41,7 +42,7 @@ export const DiscoveryCard = forwardRef(function DiscoveryCard({ item }, ref) {
           </a>
         </h3>
         <p className="mt-2 text-sm leading-snug text-paper/70">{item.blurb}</p>
-        <p className="mt-3 font-mono text-[0.66rem] tracking-[0.1em] text-paper/50 uppercase">{item.tech.join(' · ')}</p>
+        <p className="mt-3 font-mono text-[0.6875rem] tracking-[0.1em] text-paper/50 uppercase">{item.tech.join(' · ')}</p>
 
         {/* metadata surfaces on hover/focus (always visible on touch) */}
         <ul

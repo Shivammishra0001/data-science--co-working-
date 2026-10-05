@@ -18,10 +18,9 @@ export function InnovationStory() {
 function StoryIntro({ className }) {
   return (
     <div className={className}>
-      <p className="eyebrow text-paper/60">The journey · 01 → 0{N}</p>
-      <h2 id="story-title" className="display mt-3 text-big">
+      <h1 id="story-title" className="display mt-8 text-huge">
         From idea <span className="text-sun">to market</span>
-      </h2>
+      </h1>
     </div>
   )
 }
@@ -74,7 +73,7 @@ function PinnedStory() {
       ref={ref}
       aria-labelledby="story-title"
       className="relative bg-ink"
-      style={{ height: `${N * 90 + 100}vh` }}
+      style={{ height: `${N * 65 + 70}vh` }}
     >
       <div className="sticky top-0 h-svh overflow-hidden">
         {/* ghost numeral of the active stage */}
@@ -122,7 +121,7 @@ function PinnedStory() {
                   onClick={() => goTo(i)}
                   aria-current={i === active ? 'step' : undefined}
                   className={cx(
-                    'group flex w-full items-center gap-2 py-1 text-left font-mono text-[0.68rem] tracking-[0.12em] uppercase transition-colors duration-300',
+                    'group flex w-full items-center gap-2 py-1 text-left font-mono text-[0.6875rem] tracking-[0.12em] uppercase transition-colors duration-300',
                     i === active ? 'text-paper' : 'text-paper/40 hover:text-paper/80',
                   )}
                 >
@@ -182,7 +181,7 @@ function VerticalStory() {
                   </span>
                   <span className="eyebrow text-paper/60">{s.eyebrow}</span>
                 </div>
-                <h3 className="display mt-1 text-[clamp(3.2rem,14vw,6rem)] leading-[0.86]">{s.title}</h3>
+                <h3 className="display mt-1 text-[clamp(2.6rem,12vw,4.5rem)] sm:text-[clamp(2.2rem,6vw,3.6rem)] leading-[0.86]">{s.title}</h3>
                 <p className="mt-3 max-w-[30ch] text-lg leading-snug text-paper/80">{s.copy}</p>
               </div>
             </motion.li>

@@ -48,7 +48,7 @@ export function BrandSymbol({ tone = 'light', className }) {
 export function BrandMark({ className, withName = true, tone = 'light' }) {
   const t = tones[tone]
   return (
-    <SmartLink href="/" className={cx('group inline-flex items-center gap-2.5', className)} aria-label={`${brand.name} — home`}>
+    <SmartLink href="/" className={cx('group inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap', className)} aria-label={`${brand.name} — home`}>
       <BrandSymbol tone={tone} className="size-11 sm:size-12" />
       {withName && (
         <span aria-hidden="true" className="display-upright text-[1.05rem] leading-[0.92] tracking-[0.02em] sm:text-[1.15rem]">

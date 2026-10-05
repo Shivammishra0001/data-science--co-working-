@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
-import { Menu, X } from 'lucide-react'
+import { Armchair, Menu, X } from 'lucide-react'
 import { navLinks, primaryCta, signIn } from '../../config/site'
 import { useLocation } from 'react-router-dom'
 import { cx } from '../../utils/accents'
 import { SmartLink } from '../ui/SmartLink'
 import { Avatar } from '../ui/Avatar'
 import { useAuth } from '../../auth/useAuth'
+import { useBooking } from '../booking/useBooking'
 import { BrandMark } from './BrandMark'
 import { PillButton } from '../ui/PillButton'
 
@@ -16,6 +17,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
   const { user, openLogin, logout } = useAuth()
+  const { openBooking } = useBooking()
   // /community/openai still highlights "Community"
   const isCurrent = (href) => !href.includes('#') && (pathname === href || pathname.startsWith(`${href}/`))
 
@@ -42,14 +44,14 @@ export function Navbar() {
         >
           <BrandMark />
 
-          <ul className="hidden items-center gap-1.5 lg:flex">
+          <ul className="hidden items-center gap-1 xl:flex 2xl:gap-1.5">
             {navLinks.map((l) => (
               <li key={l.href}>
                 <SmartLink
                   href={l.href}
                   aria-current={isCurrent(l.href) ? 'page' : undefined}
                   className={cx(
-                    'inline-flex h-11 items-center rounded-full px-5 text-[0.8rem] font-semibold tracking-[0.08em] uppercase ring-1 ring-inset transition-colors duration-300 hover:bg-paper hover:text-ink hover:ring-paper',
+                    'inline-flex h-11 items-center rounded-full px-3.5 text-[0.8rem] font-semibold tracking-[0.08em] whitespace-nowrap uppercase ring-1 ring-inset 2xl:px-5 transition-colors duration-300 hover:bg-paper hover:text-ink hover:ring-paper',
                     isCurrent(l.href) ? 'bg-flare text-ink ring-flare' : 'text-paper/85 ring-line-strong',
                   )}
                 >
@@ -59,11 +61,11 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden shrink-0 items-center gap-2 xl:flex">
             {user ? (
               <div className="flex items-center gap-1">
                 <SmartLink href={`/profile/${user.username}`} className="inline-flex h-11 items-center gap-2 rounded-full pr-3 pl-1.5 text-sm text-paper/85 hover:bg-paper/[0.07]">
-                  <Avatar name={user.name} accent="sun" size="sm" className="!size-8 text-[0.65rem]" />
+                  <Avatar name={user.name} accent="sun" size="sm" className="!size-8 text-[0.6875rem]" />
                   {user.name.split(' ')[0]}
                 </SmartLink>
                 <button type="button" onClick={logout} className="inline-flex h-11 items-center rounded-full px-3 text-[0.75rem] font-semibold tracking-[0.08em] text-paper/55 uppercase hover:text-paper">
@@ -74,14 +76,23 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => openLogin()}
-                className="inline-flex h-11 items-center rounded-full px-4 text-[0.8rem] font-semibold tracking-[0.08em] text-paper/70 uppercase transition-colors hover:text-paper"
+                className="inline-flex h-11 items-center rounded-full px-2 text-[0.8rem] font-semibold tracking-[0.08em] whitespace-nowrap text-paper/70 uppercase transition-colors hover:text-paper 2xl:px-4"
               >
                 {signIn.label}
               </button>
             )}
+            <button
+              type="button"
+              onClick={openBooking}
+              aria-label="Grab a seat"
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-sun px-3.5 text-[0.8rem] font-semibold tracking-[0.08em] whitespace-nowrap text-ink uppercase transition-colors hover:bg-paper 2xl:px-5"
+            >
+              {/* icon-only until there's room for the label (1536px+) */}
+              <Armchair aria-hidden="true" className="size-4" /> <span className="hidden 2xl:inline">Grab a seat</span>
+            </button>
             {/* community pages have their own per-community JOIN — avoid two competing "Join"s */}
             {!pathname.startsWith('/community') && (
-              <PillButton href={primaryCta.href} variant="solid" size="sm" className="!h-11 !px-5">
+              <PillButton href={primaryCta.href} variant="solid" size="sm" className="!h-11 !px-4 whitespace-nowrap 2xl:!px-5">
                 {primaryCta.label}
               </PillButton>
             )}
@@ -92,7 +103,7 @@ export function Navbar() {
             onClick={() => setOpen(true)}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="inline-flex h-11 items-center gap-2 rounded-full bg-paper pr-4 pl-3.5 text-[0.8rem] font-semibold tracking-[0.08em] text-ink uppercase lg:hidden"
+            className="inline-flex h-11 items-center gap-2 rounded-full bg-paper pr-4 pl-3.5 text-[0.8rem] font-semibold tracking-[0.08em] text-ink uppercase xl:hidden"
           >
             <Menu aria-hidden="true" className="size-4.5" strokeWidth={2.5} />
             Menu
@@ -104,6 +115,10 @@ export function Navbar() {
         {open && (
           <MobileMenu
             onClose={() => setOpen(false)}
+            onBook={() => {
+              setOpen(false)
+              openBooking()
+            }}
             user={user}
             onSignIn={() => {
               setOpen(false)
@@ -120,7 +135,7 @@ export function Navbar() {
   )
 }
 
-function MobileMenu({ onClose, user, onSignIn, onSignOut }) {
+function MobileMenu({ onClose, user, onSignIn, onSignOut, onBook }) {
   const panelRef = useRef(null)
 
   useEffect(() => {
@@ -159,7 +174,7 @@ function MobileMenu({ onClose, user, onSignIn, onSignOut }) {
       role="dialog"
       aria-modal="true"
       aria-label="Menu"
-      className="fixed inset-0 z-50 flex flex-col bg-sun text-ink lg:hidden"
+      className="fixed inset-0 z-50 flex flex-col bg-sun text-ink xl:hidden"
       initial={{ clipPath: 'circle(0% at calc(100% - 3rem) 3rem)' }}
       animate={{ clipPath: 'circle(150% at calc(100% - 3rem) 3rem)' }}
       exit={{ clipPath: 'circle(0% at calc(100% - 3rem) 3rem)' }}
@@ -201,6 +216,13 @@ function MobileMenu({ onClose, user, onSignIn, onSignOut }) {
       </nav>
 
       <div className="container-x flex flex-wrap gap-3 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+        <button
+          type="button"
+          onClick={onBook}
+          className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-ink text-[0.95rem] font-semibold tracking-[0.06em] text-sun uppercase sm:h-16"
+        >
+          <Armchair aria-hidden="true" className="size-5" /> Grab a seat
+        </button>
         <PillButton href={primaryCta.href} onClick={onClose} variant="ink" size="lg" arrow magnetic={false} className="flex-1">
           {primaryCta.label}
         </PillButton>

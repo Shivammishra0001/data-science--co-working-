@@ -41,7 +41,7 @@ export function Footer() {
               <ul className="mt-4 flex flex-col gap-2.5">
                 {socials.map((s) => (
                   <li key={s.label}>
-                    <a href={s.href} target="_blank" rel="noreferrer" className="text-paper/85 transition-colors hover:text-sun">
+                    <a href={s.href} target="_blank" rel="noreferrer" className="-my-2 inline-flex min-h-11 min-w-11 items-center py-2 text-paper/85 transition-colors hover:text-sun">
                       {s.label}
                       <span className="sr-only"> (opens in a new tab)</span>
                     </a>

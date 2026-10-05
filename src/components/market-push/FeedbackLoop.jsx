@@ -33,7 +33,7 @@ function Heading() {
 
 const Center = () => (
   <div className="flex flex-col items-center">
-    <span className="font-mono text-[0.6rem] tracking-[0.16em] text-ink/50 uppercase">everything happens in the</span>
+    <span className="font-mono text-[0.6875rem] tracking-[0.16em] text-ink/50 uppercase">everything happens in the</span>
     <span className="display mt-1 text-[clamp(1.8rem,3.2vw,3.2rem)] leading-[0.85]">
       Real
       <br />
@@ -51,7 +51,7 @@ function PinnedLoop() {
 
   return (
     <ThemeSection tone="light" id="feedback-loop" labelledBy="mp-loop-title" sectionRef={ref}>
-      <div style={{ height: `${N * 75 + 100}vh` }}>
+      <div style={{ height: `${N * 55 + 70}vh` }}>
         <div className="sticky top-0 flex h-svh items-center overflow-hidden">
           <div className="container-x grid items-center gap-10 pt-16 lg:grid-cols-[1.15fr_0.85fr]">
             <LoopDiagram

@@ -28,7 +28,7 @@ export function LaunchStoryCard({ story, size = story.size, className }) {
         <div className="absolute inset-0 transition-transform duration-700 ease-[var(--ease-expo)] group-hover:scale-[1.03]">
           <ProjectVisual kind={story.visual} accent={story.accent} />
         </div>
-        <div className="absolute top-3 left-3 flex items-center gap-1.5 font-mono text-[0.65rem] font-semibold tracking-[0.1em] uppercase">
+        <div className="absolute top-3 left-3 flex items-center gap-1.5 font-mono text-[0.6875rem] font-semibold tracking-[0.1em] uppercase">
           <span className="rounded-full bg-paper/90 px-2.5 py-1 text-ink/60">{story.before}</span>
           <ArrowRight aria-hidden="true" className="size-3.5 text-paper" />
           <span className={cx('rounded-full px-2.5 py-1', accentSolid[story.accent])}>{story.now}</span>
@@ -40,7 +40,7 @@ export function LaunchStoryCard({ story, size = story.size, className }) {
 
       <div className={cx('flex flex-col px-5 pt-3 pb-5 sm:px-6', horizontal && 'md:flex-1 md:py-6', size === 'full' && 'lg:px-10')}>
         <div className={cx('flex items-center justify-between gap-3', size === 'small' && 'hidden')}>
-          <p className="font-mono text-[0.68rem] tracking-[0.12em] text-ink/55 uppercase">
+          <p className="font-mono text-[0.6875rem] tracking-[0.12em] text-ink/55 uppercase">
             Launched {story.launched} · {story.builder}
           </p>
           <SampleBadge tone="light" show={story.sample} />
@@ -58,15 +58,15 @@ export function LaunchStoryCard({ story, size = story.size, className }) {
         {size !== 'small' && (
           <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-ink/15 pt-4 text-sm">
             <div className="col-span-2">
-              <dt className="eyebrow !text-[0.62rem] text-ink/50">What was built</dt>
+              <dt className="eyebrow !text-[0.6875rem] text-ink/50">What was built</dt>
               <dd className="mt-1">{story.built}</dd>
             </div>
             <div>
-              <dt className="eyebrow !text-[0.62rem] text-ink/50">Technology</dt>
+              <dt className="eyebrow !text-[0.6875rem] text-ink/50">Technology</dt>
               <dd className="mt-1">{story.tech.join(' · ')}</dd>
             </div>
             <div>
-              <dt className="eyebrow !text-[0.62rem] text-ink/50">Users</dt>
+              <dt className="eyebrow !text-[0.6875rem] text-ink/50">Users</dt>
               <dd className="mt-1">{story.users ?? <span className="text-ink/50">Awaiting verified data</span>}</dd>
             </div>
           </dl>

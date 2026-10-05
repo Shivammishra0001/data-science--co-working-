@@ -21,7 +21,7 @@ export function ProjectCard({ project }) {
         </div>
         <span
           className={cx(
-            'absolute top-3 left-3 rounded-full px-3 py-1 font-mono text-[0.68rem] font-semibold tracking-[0.12em] uppercase',
+            'absolute top-3 left-3 rounded-full px-3 py-1 font-mono text-[0.6875rem] font-semibold tracking-[0.12em] uppercase',
             accentSolid[project.accent],
           )}
         >
@@ -47,7 +47,7 @@ export function ProjectCard({ project }) {
         <p className="mt-2 text-[0.98rem] leading-snug text-ink/70">{project.problem}</p>
         <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Technologies">
           {project.tags.map((t) => (
-            <li key={t} className="rounded-full border border-ink/20 px-2.5 py-1 font-mono text-[0.66rem] tracking-wide uppercase">
+            <li key={t} className="rounded-full border border-ink/20 px-2.5 py-1 font-mono text-[0.6875rem] tracking-wide uppercase">
               {t}
             </li>
           ))}

@@ -1,16 +1,13 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
-import { journey, launches } from '../../data/launches'
+import { journey } from '../../data/launches'
 import { RevealText } from '../motion/RevealText'
-import { RevealGroup, RevealItem } from '../motion/ScrollReveal'
 import { PillButton } from '../ui/PillButton'
-import { InnovationCard } from './InnovationCard'
 
 export function MarketPush() {
   return (
     <section id="market-push" aria-labelledby="market-title" className="relative overflow-hidden bg-ink py-section">
       <div className="container-x">
-        <p className="eyebrow mb-6 text-flare">Market Push</p>
         <RevealText
           id="market-title"
           lines={['From something', 'we built', <span key="c" className="text-flare">to something</span>, <span key="d" className="text-flare">people use.</span>]}
@@ -21,15 +18,6 @@ export function MarketPush() {
         </p>
 
         <JourneyRail />
-
-        <RevealGroup className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5" stagger={0.12}>
-          {launches.map((l) => (
-            <RevealItem key={l.id} preset="scale" className="h-full">
-              <InnovationCard item={l} />
-            </RevealItem>
-          ))}
-        </RevealGroup>
-
         <div className="mt-10">
           <PillButton href="/market-push" variant="flare" arrow>
             Explore Market Push

@@ -105,7 +105,7 @@ function ProfileCard({ person }) {
       </div>
       <div className="p-3 sm:p-4">
         <h3 className="text-[0.95rem] leading-tight font-semibold">{person.name}</h3>
-        <p className="mt-0.5 font-mono text-[0.62rem] tracking-[0.1em] text-ink/60 uppercase">{person.role}</p>
+        <p className="mt-0.5 font-mono text-[0.6875rem] tracking-[0.1em] text-ink/60 uppercase">{person.role}</p>
         <p className="mt-2 hidden text-xs text-ink/70 sm:block">{person.focus}</p>
       </div>
     </article>

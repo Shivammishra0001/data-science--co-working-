@@ -12,9 +12,12 @@ const icons = { ai: Brain, data: Database, healthtech: HeartPulse, fintech: Wall
 
 // 08 — DARK (continues): the market's many directions. Discovery, not a
 // catalogue — filter by what a project needs, not by price.
+const MOBILE_LIMIT = 6
+
 export function InnovationDiscovery() {
   const [filter, setFilter] = useState('all')
   const [category, setCategory] = useState(null)
+  const [expanded, setExpanded] = useState(false) // phones show 6 until asked
 
   const shown = innovations.filter(
     (it) => (filter === 'all' || it.flags.includes(filter)) && (!category || it.category === category),
@@ -82,12 +85,23 @@ export function InnovationDiscovery() {
         <LayoutGroup>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <AnimatePresence mode="popLayout" initial={false}>
-              {shown.map((it) => (
-                <DiscoveryCard key={it.id} item={it} />
+              {shown.map((it, i) => (
+                <DiscoveryCard key={it.id} item={it} className={!expanded && i >= MOBILE_LIMIT ? 'max-sm:hidden' : undefined} />
               ))}
             </AnimatePresence>
           </ul>
         </LayoutGroup>
+
+        {/* phones: a single column of 12 cards was ~6 screens of scrolling */}
+        {!expanded && shown.length > MOBILE_LIMIT && (
+          <button
+            type="button"
+            onClick={() => setExpanded(true)}
+            className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full text-sm font-semibold tracking-[0.06em] text-paper uppercase ring-1 ring-line-strong ring-inset hover:bg-paper hover:text-ink sm:hidden"
+          >
+            Show all {shown.length}
+          </button>
+        )}
 
         {shown.length === 0 && (
           <div className="mt-10 flex flex-col items-start gap-4 rounded-card border border-dashed border-line-strong p-8">

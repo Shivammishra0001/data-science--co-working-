@@ -63,6 +63,53 @@
     }
   }
 
+  /* Hero robots: slow idle loops (paused off-screen, off for reduced motion) */
+  --animate-bot-bob: bot-bob 3.6s ease-in-out infinite;
+  --animate-bot-wave: bot-wave 1.8s ease-in-out infinite;
+  --animate-bot-float: bot-float 6s ease-in-out infinite;
+  --animate-bot-blink: bot-blink 5s steps(1) infinite;
+
+  @keyframes bot-bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+  @keyframes bot-wave {
+    0%,
+    100% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(14deg);
+    }
+  }
+  @keyframes bot-float {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    33% {
+      transform: translate(4px, -9px);
+    }
+    66% {
+      transform: translate(-5px, -4px);
+    }
+  }
+  @keyframes bot-blink {
+    0%,
+    94%,
+    100% {
+      transform: scaleY(1);
+    }
+    96% {
+      transform: scaleY(0.1);
+    }
+  }
+
   /* Community platform: calm UI motion only — fades and ≤6px shifts, ≤220ms */
   --animate-fade-in: fade-in 200ms var(--ease-soft) both;
   --animate-toast-in: toast-in 180ms var(--ease-soft) both;
@@ -84,7 +131,8 @@
   --radius-tile: 1.25rem;
 
   --spacing-gutter: clamp(1rem, 4vw, 3.5rem);
-  --spacing-section: clamp(5.5rem, 12vw, 11rem);
+  /* per-side section padding: 48px phones → ~94px at 1440 → 120px max */
+  --spacing-section: clamp(3rem, 6.5vw, 7.5rem);
 }
 
 /* ------------------------------------------------------------------ */

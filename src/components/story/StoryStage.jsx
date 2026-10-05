@@ -36,7 +36,7 @@ export function StoryStage({ stage, index, total, progress }) {
         <span className="h-px flex-1 bg-line-strong" aria-hidden="true" />
         <span className="eyebrow text-paper/60">{stage.eyebrow}</span>
       </div>
-      <motion.h3 style={{ x: titleX }} className="display mt-2 text-[clamp(3.5rem,7.6vw,8.5rem)] leading-[0.84] text-paper">
+      <motion.h3 style={{ x: titleX }} className="display mt-2 text-[clamp(3rem,5.8vw,6.2rem)] leading-[0.84] text-paper">
         {stage.title}
       </motion.h3>
       <p className="mt-5 max-w-[26ch] text-[clamp(1.2rem,1.7vw,1.65rem)] leading-snug text-paper/80">{stage.copy}</p>

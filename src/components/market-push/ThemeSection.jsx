@@ -11,7 +11,7 @@ const tones = {
 // complexity → people → momentum), so it's staged: the incoming section
 // rises as a sheet — inset and rounded — and settles full-bleed as it arrives.
 // clip-path doesn't create a scroll container, so sticky children still pin.
-export function ThemeSection({ tone = 'dark', id, labelledBy, className, children, sheet = true, sectionRef }) {
+export function ThemeSection({ tone = 'dark', id, labelledBy, className, children, sheet = true, sectionRef, ...rest }) {
   const localRef = useRef(null)
   const ref = sectionRef ?? localRef
   const reduce = useReducedMotion()
@@ -26,6 +26,7 @@ export function ThemeSection({ tone = 'dark', id, labelledBy, className, childre
       id={id}
       aria-labelledby={labelledBy}
       data-theme={tone}
+      {...rest}
       style={sheet && !reduce ? { clipPath } : undefined}
       className={cx('relative', sheet && '-mt-16', tones[tone], className)}
     >

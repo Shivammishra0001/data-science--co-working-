@@ -31,10 +31,12 @@ export function LoopList({ stages, tone = 'dark', returnLabel = 'Back to the sta
           </div>
         </motion.li>
       ))}
-      <li className={cx('flex items-center gap-3 pl-1 font-mono text-xs tracking-[0.14em] uppercase', dim)}>
-        <RotateCcw aria-hidden="true" className="size-4" />
-        {returnLabel}
-      </li>
+      {returnLabel && (
+        <li className={cx('flex items-center gap-3 pl-1 font-mono text-xs tracking-[0.14em] uppercase', dim)}>
+          <RotateCcw aria-hidden="true" className="size-4" />
+          {returnLabel}
+        </li>
+      )}
     </ol>
   )
 }

@@ -4,6 +4,7 @@ import { RevealText } from '../motion/RevealText'
 import { ScrollReveal } from '../motion/ScrollReveal'
 import { PillButton } from '../ui/PillButton'
 import { ButterflyLoop } from './ButterflyLoop'
+import { GraphicReveal } from '../motion/GraphicReveal'
 
 export function FinalCTA() {
   const ref = useRef(null)
@@ -23,7 +24,9 @@ export function FinalCTA() {
         style={{ y, scale }}
         className="absolute top-1/2 left-1/2 -z-10 aspect-[16/9] w-[max(120vw,900px)] -translate-x-1/2 -translate-y-1/2 opacity-80 lg:w-[88vw]"
       >
-        <ButterflyLoop />
+        <GraphicReveal decorative amount={0.2} className="size-full">
+          <ButterflyLoop />
+        </GraphicReveal>
       </motion.div>
 
       {/* scrim so copy stays readable over the brightest part of the wings */}

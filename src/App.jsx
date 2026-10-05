@@ -11,6 +11,7 @@ const MarketPushPage = lazy(() => import('./pages/MarketPushPage'))
 const CommunityPage = lazy(() => import('./pages/CommunityPage'))
 const CommunityDetailPage = lazy(() => import('./pages/CommunityDetailPage'))
 const ProfilePage = lazy(() => import('./pages/ProfilePage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/market-push" element={<MarketPushPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/community" element={<CommunityPage />} />
             <Route path="/community/:slug" element={<CommunityDetailPage />} />
             <Route path="/profile/:username" element={<ProfilePage />} />

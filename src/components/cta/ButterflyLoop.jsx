@@ -17,6 +17,15 @@ export function ButterflyLoop({ className }) {
   const { imagesRef, loaded } = useFrameSequence(butterflySrcs, { enabled: near })
   const clock = useRef({ acc: 0, step: 0 })
 
+  // size the canvas on layout changes only — never inside the animation loop
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ro = new ResizeObserver(() => syncCanvasSize(canvas))
+    ro.observe(canvas)
+    return () => ro.disconnect()
+  }, [])
+
   useEffect(() => {
     if (!loaded) return
     syncCanvasSize(canvasRef.current)
@@ -32,7 +41,6 @@ export function ButterflyLoop({ className }) {
     const n = imagesRef.current.length
     c.step = (c.step + 1) % (2 * n - 2)
     const i = c.step < n ? c.step : 2 * n - 2 - c.step
-    syncCanvasSize(canvasRef.current)
     drawContain(canvasRef.current, imagesRef.current[i])
   })
 

@@ -39,7 +39,7 @@ export function PostCard({ post }) {
       className={cx('rounded-xl border bg-ink-2 px-4 pt-4 pb-2 sm:px-5 sm:pt-5', post.pinned ? 'border-line-strong' : 'border-line')}
     >
       {(post.pinned || post.featured) && (
-        <p className="mb-3 flex items-center gap-3 font-mono text-[0.66rem] tracking-[0.12em] text-paper/55 uppercase">
+        <p className="mb-3 flex items-center gap-3 font-mono text-[0.6875rem] tracking-[0.12em] text-paper/55 uppercase">
           {post.pinned && (
             <span className="flex items-center gap-1.5">
               <Pin aria-hidden="true" className="size-3.5 text-sun" /> Pinned

@@ -1,90 +1,98 @@
 import { motion } from 'motion/react'
-import { ArrowRight } from 'lucide-react'
-import { communities, ecosystemCard } from '../../data/communities'
+import { Armchair, ArrowRight, Check } from 'lucide-react'
+import { useBooking } from '../booking/useBooking'
+import { communities, communitySection as copy } from '../../data/communities'
 import { RevealText } from '../motion/RevealText'
+import { ScrollReveal } from '../motion/ScrollReveal'
+import { PillButton } from '../ui/PillButton'
 import { SampleBadge } from '../ui/SampleBadge'
 import { SmartLink } from '../ui/SmartLink'
 import { CommunityCard } from './CommunityCard'
+import { tileIn } from './tileMotion'
 
-// A technology wall: 2 featured posters, then 4 + 3 tiles and an ecosystem
-// endpoint. Desktop 4 cols (features span 2) · tablet 2 · mobile 1.
-// Borders collapse via -m-px so the wall reads as one ruled surface.
+// Left: the tagline (sticky on desktop). Right: an uneven logo wall —
+// two 2×2 feature tiles placed on a diagonal, small square tiles around them,
+// and a "View all" tile to finish the grid. 4 cols desktop · 3 tablet · 2 phone.
+// Copy lives in src/data/communities.js → communitySection.
 export function CommunityGrid() {
-  const ordered = [...communities.filter((c) => c.featured), ...communities.filter((c) => !c.featured)]
+  const [first, second] = communities.filter((c) => c.featured)
+  const rest = communities.filter((c) => !c.featured)
+  const title = copy.title
+  const { openBooking } = useBooking()
+
   return (
     <section id="community" aria-labelledby="community-title" className="bg-ink py-section">
-      <div className="container-x">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="eyebrow mb-6 flex items-center gap-3 text-paper/60">
-              Technology communities <SampleBadge show={communities.some((c) => c.sample)}>Sample counts</SampleBadge>
-            </p>
-            <RevealText
-              id="community-title"
-              lines={['Build inside the', 'technologies shaping', <span key="c" className="text-volt">what comes next.</span>]}
-              className="display text-huge"
-            />
-          </div>
+      <div className="container-x grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <p className="eyebrow mb-6 flex items-center gap-3 text-paper/60">
+            {copy.eyebrow} <SampleBadge show={communities.some((c) => c.sample)}>Sample counts</SampleBadge>
+          </p>
+          <RevealText
+            id="community-title"
+            lines={[...title.slice(0, -1), <span key="hl" className="text-volt">{title.at(-1)}</span>]}
+            className="display text-huge"
+          />
+          <ScrollReveal delay={0.2} className="mt-6 max-w-md">
+            <p className="text-lg leading-relaxed text-paper/75">{copy.body}</p>
+            <ul className="mt-6 flex flex-col gap-2.5">
+              {copy.points.map((pt) => (
+                <li key={pt} className="flex items-center gap-3 text-paper/85">
+                  <span className="grid size-5 shrink-0 place-items-center rounded-full bg-volt/20 text-[#8196ff]">
+                    <Check aria-hidden="true" className="size-3" strokeWidth={3} />
+                  </span>
+                  {pt}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <PillButton href={copy.cta.href} variant="solid" arrow>
+                {copy.cta.label}
+              </PillButton>
+              <button
+                type="button"
+                onClick={openBooking}
+                className="inline-flex h-12 items-center gap-2 rounded-full bg-sun px-6 text-sm font-semibold tracking-[0.06em] text-ink uppercase transition-colors hover:bg-paper"
+              >
+                <Armchair aria-hidden="true" className="size-4" /> Grab a seat
+              </button>
+            </div>
+          </ScrollReveal>
         </div>
 
         <motion.ul
           aria-label="Technology communities"
           initial="hidden"
           whileInView="shown"
-          viewport={{ once: true, amount: 0.12 }}
-          transition={{ staggerChildren: 0.07 }}
-          className="mt-14 grid grid-cols-1 pt-px pl-px md:grid-cols-2 lg:grid-cols-4 [&>*]:-mt-px [&>*]:-ml-px"
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ staggerChildren: 0.05 }}
+          className="grid grid-flow-dense grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4"
         >
-          {ordered.map((c) => (
+          <CommunityCard community={first} size="lg" />
+          {/* second feature sits bottom-right on desktop: a diagonal, not a block */}
+          <CommunityCard community={second} size="lg" className="lg:col-start-3 lg:row-start-3" />
+          {rest.map((c) => (
             <CommunityCard key={c.id} community={c} />
           ))}
-          <EcosystemCard />
+          <ViewAllTile />
         </motion.ul>
       </div>
     </section>
   )
 }
 
-const arrows = [0, 1, 2]
-
-function EcosystemCard() {
+function ViewAllTile() {
   return (
-    <motion.li
-      variants={{ hidden: { opacity: 0 }, shown: { opacity: 1, transition: { duration: 0.8 } } }}
-      className="group relative isolate flex min-h-[13rem] flex-col justify-between overflow-hidden border border-line bg-ink p-5 transition-colors duration-500 hover:bg-paper hover:text-ink focus-within:bg-paper focus-within:text-ink sm:min-h-[15rem] sm:p-6"
-    >
-      <p className="font-mono text-[0.68rem] tracking-[0.12em] text-paper/55 uppercase transition-colors duration-500 group-hover:text-ink/60 group-focus-within:text-ink/60">
-        {communities.length}+ communities · more joining
-      </p>
-      <div>
-        <h3 className="display text-[clamp(1.9rem,2.5vw,2.5rem)] leading-[0.9]">
-          <SmartLink
-            href={ecosystemCard.href}
-            className="outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-4 focus-visible:after:outline-sun"
-          >
-            {ecosystemCard.title.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
-          </SmartLink>
-        </h3>
-        {/* three arrows travel in sequence on hover/focus; static otherwise */}
-        <span aria-hidden="true" className="mt-3 flex">
-          {arrows.map((i) => (
-            <ArrowRight
-              key={i}
-              style={{ transitionDelay: `${i * 70}ms` }}
-              className="-mr-1.5 size-6 transition-[transform,opacity] duration-500 ease-[var(--ease-expo)] group-hover:translate-x-3 group-focus-within:translate-x-3"
-              opacity={1 - i * 0.3}
-              strokeWidth={2.25}
-            />
-          ))}
+    <motion.li variants={tileIn}>
+      <SmartLink
+        href={copy.viewAll.href}
+        className="group flex aspect-square size-full flex-col items-center justify-center rounded-xl border border-dashed border-line-strong text-center transition-colors duration-500 hover:border-volt hover:bg-volt/10 focus-visible:border-volt focus-visible:outline-none"
+      >
+        <span className="display text-[clamp(1.6rem,2.4vw,2.4rem)] leading-none text-[#8196ff]">{communities.length}+</span>
+        <span className="mt-1.5 flex items-center gap-1 text-sm font-semibold text-paper/85">
+          {copy.viewAll.label}
+          <ArrowRight aria-hidden="true" className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
         </span>
-        <p className="mt-3 text-sm text-paper/60 transition-colors duration-500 group-hover:text-ink/70 group-focus-within:text-ink/70">
-          {ecosystemCard.description}
-        </p>
-      </div>
+      </SmartLink>
     </motion.li>
   )
 }

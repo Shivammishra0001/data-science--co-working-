@@ -23,7 +23,7 @@ export function CommunitySidebar() {
             {community.name}
           </h2>
         </div>
-        <dl className="mt-4 grid grid-cols-2 gap-3 font-mono text-[0.68rem] tracking-[0.1em] uppercase">
+        <dl className="mt-4 grid grid-cols-2 gap-3 font-mono text-[0.6875rem] tracking-[0.1em] uppercase">
           <div className="flex flex-col-reverse">
             <dt className="text-paper/50">Members</dt>
             <dd className="text-lg font-semibold tracking-normal text-paper">{compact(community.membersCount)}</dd>

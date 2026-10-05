@@ -27,14 +27,14 @@ function PinnedQuestions() {
   const askY = useTransform(progress, [0.22, 0.3], [30, 0])
 
   return (
-    <div ref={ref} className="h-[360vh]">
+    <div ref={ref} className="h-[210vh] lg:h-[270vh]">
       <div className="sticky top-0 flex h-svh items-center overflow-hidden">
         <div className="container-x grid w-full gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
           <div>
             <p className="eyebrow text-paper/55">05 · Validation</p>
             <motion.h2 id="mp-validation-title" style={{ opacity: wrongO }} className="display mt-3 text-giant">
               Don’t ask:
-              <span className="relative mt-1 block w-max text-paper/70">
+              <span className="relative mt-1 block w-fit max-w-full text-[0.8em] text-paper/70">
                 “Does it work?”
                 <motion.span
                   aria-hidden="true"
@@ -128,7 +128,7 @@ function SignalPanel() {
 function Strength({ value }) {
   if (value < 0) {
     return (
-      <span className="font-mono text-[0.6rem] tracking-[0.12em] text-paper/50 uppercase">
+      <span className="font-mono text-[0.6875rem] tracking-[0.12em] text-paper/50 uppercase">
         <span aria-hidden="true">−</span>
         <span className="sr-only">Negative signal</span>
       </span>

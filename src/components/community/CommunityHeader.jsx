@@ -18,7 +18,7 @@ export function CommunityHeader() {
           <BrandLogo community={community} className="h-12 sm:h-14" />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="font-mono text-[0.68rem] tracking-[0.12em] text-[color-mix(in_srgb,var(--acc)_70%,var(--color-paper))] uppercase">
+          <p className="font-mono text-[0.6875rem] tracking-[0.12em] text-[color-mix(in_srgb,var(--acc)_70%,var(--color-paper))] uppercase">
             {community.categories.join(' · ')}
           </p>
           <h1 className="display-upright mt-1 text-[clamp(2.2rem,4.6vw,3.4rem)] leading-[0.95]">{community.name}</h1>

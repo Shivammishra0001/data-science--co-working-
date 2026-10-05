@@ -5,6 +5,7 @@ import { RevealText } from '../motion/RevealText'
 import { ScrollReveal } from '../motion/ScrollReveal'
 import { PillButton } from '../ui/PillButton'
 import { NeuralField } from './NeuralField'
+import { GraphicReveal } from '../motion/GraphicReveal'
 import { ThemeSection } from './ThemeSection'
 
 // 12 — DARK: momentum. The network returns, fully connected. When you arrive,
@@ -28,14 +29,16 @@ export function MarketCTA() {
   return (
     <ThemeSection tone="dark" id="submit" labelledBy="mp-cta-title" className="overflow-hidden">
       <div ref={ref} className="relative isolate flex min-h-svh flex-col justify-center py-section">
-        <NeuralField
-          connectivity={1}
-          density="high"
-          seed={21}
-          onReady={(a) => (api.current = a)}
-          className="absolute inset-0 -z-10 opacity-90"
-          label="The neural network again, now fully connected; a single signal enters and spreads through every node."
-        />
+        <GraphicReveal amount={0.25} className="absolute inset-0 -z-10">
+          <NeuralField
+            connectivity={1}
+            density="high"
+            seed={21}
+            onReady={(a) => (api.current = a)}
+            className="absolute inset-0 opacity-90"
+            label="The neural network again, now fully connected; a single signal enters and spreads through every node."
+          />
+        </GraphicReveal>
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_46%_40%_at_50%_50%,rgba(8,8,11,0.9),transparent)]"

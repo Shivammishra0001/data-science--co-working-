@@ -35,11 +35,11 @@ export function InnovationCard({ item }) {
 
       <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-line pt-5 text-sm">
         <div>
-          <dt className="eyebrow !text-[0.65rem] text-mute">Industry</dt>
+          <dt className="eyebrow !text-[0.6875rem] text-mute">Industry</dt>
           <dd className="mt-1 font-medium">{item.industry}</dd>
         </div>
         <div>
-          <dt className="eyebrow !text-[0.65rem] text-mute">Technology</dt>
+          <dt className="eyebrow !text-[0.6875rem] text-mute">Technology</dt>
           <dd className="mt-1 font-medium">{item.tech.join(' · ')}</dd>
         </div>
       </dl>
@@ -53,7 +53,7 @@ export function InnovationCard({ item }) {
             />
             <span
               className={cx(
-                'mt-2 block font-mono text-[0.6rem] tracking-[0.08em] uppercase',
+                'mt-2 block font-mono text-[0.6875rem] tracking-[0.08em] uppercase',
                 i === reached ? 'text-paper' : 'text-paper/35',
               )}
             >
