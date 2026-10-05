@@ -51,7 +51,6 @@ export function VisionStory() {
           ))}
         </ul>
 
-        <RevealText as="p" lines={vision.final} className="display mt-[clamp(5rem,12vw,9rem)] text-giant" />
       </div>
     </section>
   )

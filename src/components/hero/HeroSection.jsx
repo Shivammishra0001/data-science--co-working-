@@ -29,7 +29,7 @@ export function HeroSection() {
 
       {/* the copy layer lets the pointer through to the robots behind it; links/buttons stay clickable */}
       <motion.div ref={copyRef} style={{ y: copyY, opacity: copyOpacity }} className="container-x pointer-events-none relative flex flex-1 flex-col justify-center select-text [&_a]:pointer-events-auto [&_button]:pointer-events-auto">
-        <p className="eyebrow mb-6 flex items-center gap-3 text-paper/70 sm:mb-8">
+        <p className="eyebrow mb-6 flex items-center gap-3 text-paper/50 sm:mb-8">
           <span className="animate-pulse-dot size-2 rounded-full bg-mint" aria-hidden="true" />
           {brand.descriptor}
           <span className="hidden sm:inline">· {brand.location}</span>

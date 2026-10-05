@@ -21,15 +21,8 @@ export const vision = {
     ['We are building', 'a better environment', 'for builders.'],
   ],
   body: 'We want people to walk in with curiosity and walk out having created something real.',
-  futuresTitle: 'A future where…',
   futures: [
-    ['Students', 'build real products'],
-    ['Researchers', 'find collaborators'],
-    ['Developers', 'become founders'],
-    ['Founders', 'find technical talent'],
-    ['Experts', 'share experience'],
-    ['Companies', 'discover what’s being built'],
-    ['Communities', 'become laboratories'],
+    
   ],
   final: ['We want to make building', 'a default behaviour.'],
 }

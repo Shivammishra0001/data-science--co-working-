@@ -34,9 +34,7 @@ export default function AboutPage() {
       <EcosystemFlow />
       <DayAtTheSpace />
       <WhatYouGet />
-      <IdeaToRealWorld />
       <VisionStory />
-      <FutureNetwork />
       <Manifesto />
       <AboutCTA />
     </>
